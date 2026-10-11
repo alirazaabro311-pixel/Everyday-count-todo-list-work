@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow | Smart To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+
+    <!-- Authentication screen -->
+    <section id="authScreen" class="auth-layout">
+      <div class="brand-panel">
+        <div class="brand-logo">✓</div>
+        <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+        <h1>Make every day<br>count.</h1>
+        <p class="brand-text">
+          Organize your tasks, focus on what matters,
+          and turn your plans into progress.
+        </p>
+        <div class="feature"><span>✓</span> Keep all your tasks organized</div>
+        <div class="feature"><span>✓</span> Access your tasks securely</div>
+        <div class="feature"><span>✓</span> Track your daily progress</div>
+      </div>
+
+      <div class="auth-panel">
+        <div class="mobile-brand">TaskFlow<span>.</span></div>
+        <p class="eyebrow">WELCOME TO TASKFLOW</p>
+        <h2 id="authTitle">Welcome back</h2>
+        <p id="authSubtitle" class="muted">
+          Sign in to continue to your workspace.
+        </p>
+
+        <div id="authMessage" class="message" role="status"
+             aria-live="polite"></div>
+
+        <form id="authForm">
+          <div id="nameGroup" class="field hidden">
+            <label for="fullName">Full name</label>
+            <input id="fullName" type="text"
+                   placeholder="Your full name" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" type="email"
+                   placeholder="you@example.com"
+                   autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password"
+                   placeholder="At least 6 characters"
+                   autocomplete="current-password"
+                   minlength="6" required>
+          </div>
+
+          <button id="authSubmit" class="btn primary full" type="submit">
+            Sign In
+          </button>
+        </form>
+
+        <p class="switch-text">
+          <span id="switchLabel">Don't have an account?</span>
+          <button id="switchAuth" class="text-button" type="button">
+            Create account
+          </button>
+        </p>
+      </div>
+    </section>
+
+    <!-- Task dashboard -->
+    <section id="appScreen" class="dashboard hidden">
+      <header class="topbar">
+        <a href="#" class="brand" aria-label="TaskFlow home">
+          <span class="brand-mark">✓</span> TaskFlow<span class="brand-dot">.</span>
+        </a>
+        <div class="user-area">
+          <div class="avatar" id="avatar">U</div>
+          <div class="user-info">
+            <strong id="userName">User</strong>
+            <small id="userEmail"></small>
+          </div>
+          <button id="logoutBtn" class="btn outline" type="button">
+            Log Out
+          </button>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow">YOUR WORKSPACE</p>
+            <h1 id="welcomeTitle">My Tasks</h1>
+            <p class="muted">A little progress every day adds up.</p>
+          </div>
+          <div class="date-card">
+            <span> TODAY </span>
+            <strong id="todayDate"></strong>
+          </div>
+        </div>
+
+        <div class="stats">
+          <article class="stat-card">
+            <span class="stat-icon purple">▤</span>
+            <p>Total tasks</p>
+            <strong id="totalCount">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon orange">◷</span>
+            <p>Pending</p>
+            <strong id="pendingCount">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon green">✓</span>
+            <p>Completed</p>
+            <strong id="completedCount">0</strong>
+          </article>
+        </div>
+
+        <section class="task-panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Your task list</h2>
+              <p class="muted">Add a task and keep moving forward.</p>
+            </div>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <input id="taskInput" type="text"
+                   placeholder="What do you need to get done?"
+                   maxlength="200" required>
+            <button id="saveTaskBtn" class="btn primary" type="submit">
+              <span id="saveIcon">+</span>
+              <span id="saveLabel">Add Task</span>
+            </button>
+            <button id="cancelEditBtn" class="btn outline hidden"
+                    type="button">Cancel</button>
+          </form>
+
+          <div id="taskMessage" class="message" role="status"
+               aria-live="polite"></div>
+
+          <div class="filter-row">
+            <div class="filters" aria-label="Filter tasks">
+              <button type="button" class="filter active" data-filter="all">
+                All Tasks
+              </button>
+              <button type="button" class="filter" data-filter="pending">
+                Pending
+              </button>
+              <button type="button" class="filter" data-filter="completed">
+                Completed
+              </button>
+            </div>
+            <span id="taskSummary" class="muted">0 tasks</span>
+          </div>
+
+          <div id="taskList" class="task-list">
+            <div class="loading">Loading your tasks...</div>
+          </div>
+
+          <div class="panel-footer">
+            <span>🔒 Your tasks are linked to your account.</span>
+            <span>Powered by Firebase</span>
+          </div>
+        </section>
+        <footer class="footer">TaskFlow © 2026 · Stay focused. Get things done.</footer>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
